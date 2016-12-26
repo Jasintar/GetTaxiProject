@@ -13,11 +13,11 @@
   <body>
   Hello user! <br>
   Enter your login and password <br>
-  <form method="POST" onsubmit="">
+  <form method="POST" action="authentication">
     <label for="username">Username:</label>
-    <input id="username"> <br>
+    <input id="username" name="username"> <br>
     <label for="username">Password:</label>
-    <input id="password"> <br>
+    <input id="password" name="password"> <br>
 
     <input type="submit" value="Sign in">
 

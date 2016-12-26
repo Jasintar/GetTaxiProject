@@ -1,7 +1,8 @@
-package ru.innopolis.uni.course3.taxiapp;
+package ru.innopolis.uni.course3.taxiapp.controllers;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.innopolis.uni.course3.taxiapp.DBConnector;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,21 +12,16 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 /**
- * Created on 22.12.2016.
+ * Created on 25.12.2016.
  *
  * @authot Julia Savicheva
  */
-public class RegistrationServlet extends HttpServlet {
-    private static final Logger LOG = LoggerFactory.getLogger(RegistrationServlet.class);
+public class RegistrationControllerServlet extends HttpServlet {
+    private static final Logger LOG = LoggerFactory.getLogger(RegistrationControllerServlet.class);
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-//        LOG.info(req.getParameter("username"));
-//        LOG.info(req.getParameter("password"));
-//        LOG.info(req.getParameter("phone"));
-//        LOG.info(req.getParameter("firstName"));
-
         try {
             switch (req.getParameter("userType")) {
                 case "client":
@@ -41,13 +37,8 @@ public class RegistrationServlet extends HttpServlet {
                     resp.sendRedirect(String.format("%s%s", req.getContextPath(), "/"));
                     break;
             }
-//            DBConnector.getInstance().insertClient(req.getParameter("username"), req.getParameter("password"),
-//                    req.getParameter("phone"), req.getParameter("firstName"));
-//            resp.sendRedirect(String.format("%s%s", req.getContextPath(), "/"));
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
-//        super.doPost(req, resp);
     }
 }
