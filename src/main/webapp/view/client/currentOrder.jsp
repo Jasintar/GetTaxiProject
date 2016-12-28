@@ -1,6 +1,6 @@
-<%--
+<%@ page import="ru.innopolis.uni.course3.taxiapp.User" %><%--
   Created by IntelliJ IDEA.
-  User: julia
+  UserDAO: julia
   Date: 25.12.2016
   Time: 19:00
   To change this template use File | Settings | File Templates.
@@ -11,6 +11,21 @@
     <title>Current order</title>
 </head>
 <body>
-    You placed order. Now you can wait only!
+<%
+    HttpSession ses = request.getSession();
+    User user = (User) ses.getAttribute("user");
+    String firstname = "";
+    if (user != null) {
+        firstname = user.getFirstname();
+
+    } else {
+        response.sendRedirect(request.getContextPath().concat("/index.jsp"));
+    }
+%>
+    <h1>Hello, <%=firstname%>!</h1>
+    <p>You placed order. Now you can wait only!</p>
+    <p>
+        <a href="${pageContext.servletContext.contextPath}/logaut">Выйти</a>
+    </p>
 </body>
 </html>

@@ -1,6 +1,6 @@
 <%@ page import="ru.innopolis.uni.course3.taxiapp.User" %><%--
   Created by IntelliJ IDEA.
-  User: julia
+  UserDAO: julia
   Date: 25.12.2016
   Time: 15:41
   To change this template use File | Settings | File Templates.
@@ -32,5 +32,9 @@
 
         <input type="submit" value="Make order">
     </form>
+    <p>
+        <a href="${pageContext.servletContext.contextPath}/logaut">Выйти</a>
+    </p>
+
 </body>
 </html>

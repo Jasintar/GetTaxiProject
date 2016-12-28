@@ -8,26 +8,46 @@
         <servlet-name>RegistrationControllerServlet</servlet-name>
         <servlet-class>ru.innopolis.uni.course3.taxiapp.controllers.RegistrationControllerServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>AuthControllerServlet</servlet-name>
-        <servlet-class>ru.innopolis.uni.course3.taxiapp.controllers.AuthControllerServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>OrderControllerServlet</servlet-name>
-        <servlet-class>ru.innopolis.uni.course3.taxiapp.controllers.OrderControllerServlet</servlet-class>
-    </servlet>
-
     <servlet-mapping>
         <servlet-name>RegistrationControllerServlet</servlet-name>
         <url-pattern>/registration</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AuthControllerServlet</servlet-name>
+        <servlet-class>ru.innopolis.uni.course3.taxiapp.controllers.AuthControllerServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AuthControllerServlet</servlet-name>
         <url-pattern>/authentication</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>OrderControllerServlet</servlet-name>
+        <servlet-class>ru.innopolis.uni.course3.taxiapp.controllers.OrderControllerServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>OrderControllerServlet</servlet-name>
         <url-pattern>/order</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LogautControllerServlet</servlet-name>
+        <servlet-class>ru.innopolis.uni.course3.taxiapp.controllers.LogautControllerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogautControllerServlet</servlet-name>
+        <url-pattern>/logaut</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>UserCheckFilter</filter-name>
+        <filter-class>ru.innopolis.uni.course3.taxiapp.filters.AuthenticationCheck</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>UserCheckFilter</filter-name>
+        <url-pattern>/order</url-pattern>
+        <url-pattern>/view</url-pattern>
+    </filter-mapping>
 
 </web-app>
