@@ -38,7 +38,7 @@ public class OrderDAO {
         return order;
     }
 
-    public void updateOrderStatus(String orderId, String driverId, String newStatus) throws OrderDAOException {
+    public void updateOrderStatus(long orderId, long driverId, String newStatus) throws OrderDAOException {
         String query = String.format(UPDATE_ORDER_STATUS, newStatus, driverId, orderId);
         Statement statement = DBConnector.getInstance().getStatement();
         try {
@@ -78,8 +78,7 @@ public class OrderDAO {
             Statement statement = DBConnector.getInstance().getStatement();
             ResultSet resultSet = statement.executeQuery(query);
 
-            if (resultSet != null) {
-                resultSet.next();
+            if (resultSet.next()) {
                 order = new Order(resultSet.getLong("id_order"), resultSet.getString("start"),
                         resultSet.getString("finish"), resultSet.getString("status"), resultSet.getLong("id_client"),
                         resultSet.getLong("id_driver"));
@@ -87,7 +86,6 @@ public class OrderDAO {
             }
         } catch (SQLException e) {
             LOG.warn(e.getMessage());
-//            throw new OrderDAOException();
         }
         return order;
     }
@@ -155,11 +153,15 @@ public class OrderDAO {
         return orderList;
     }
 
-    // TODO реализовать
-    public static Order getOrderById() {
-        Order order = null;
-
-        return order;
+    public void deleteOrderById(long orderId) throws OrderDAOException {
+        String query = String.format(DELETE_ORDER_BY_ID, orderId);
+        try {
+            Statement statement = DBConnector.getInstance().getStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+        } catch (SQLException e) {
+            LOG.warn(e.getMessage().concat(" Cant delete order with id = " + orderId));
+            throw new OrderDAOException("Cant delete order with id = " + orderId);
+        }
     }
 
 }

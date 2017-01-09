@@ -13,6 +13,12 @@ public class Order {
     private long clientId;
     private long driverId;
 
+    public Order(String start, String finish, long clientId) {
+        this.start = start;
+        this.finish = finish;
+        this.clientId = clientId;
+    }
+
     public Order(String start, String finish, String status, long clientId) {
         this.start = start;
         this.finish = finish;

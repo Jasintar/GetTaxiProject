@@ -11,18 +11,7 @@
     <title>Current order</title>
 </head>
 <body>
-<%
-    HttpSession ses = request.getSession();
-    User user = (User) ses.getAttribute("user");
-    String firstname = "";
-    if (user != null) {
-        firstname = user.getFirstname();
-
-    } else {
-        response.sendRedirect(request.getContextPath().concat("/index.jsp"));
-    }
-%>
-    <h1>Hello, <%=firstname%>!</h1>
+    <h1>Hello, ${user.getFirstname()}!</h1>
     <p>You placed order. Now you can wait only!</p>
     <p>
         <a href="${pageContext.servletContext.contextPath}/logaut">Выйти</a>

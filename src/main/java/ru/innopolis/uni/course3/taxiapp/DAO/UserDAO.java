@@ -23,11 +23,22 @@ public class UserDAO {
 
     public UserDAO() {
     }
+
 //    TODO переделать метод
     public User getUserByCredentials(String login, String password) throws UserDAOException {
         User user;
+        Statement statement = DBConnector.getInstance().getStatement();
+
+        String query = String.format(SELECT_USER, login, password);
         try {
-            user = DBConnector.getInstance().getUser(login, password);
+            ResultSet resultSet = statement.executeQuery(query);
+            if (resultSet == null) {
+                LOG.info("Incorrect username or password");
+                throw new SQLException("Auth failed");
+            }
+            resultSet.next();
+            LOG.info("Correct credentials. Found user ({})", resultSet.getString("username"));
+            user = new User(resultSet.getString("username"), resultSet.getString("first_name"), resultSet.getString("phone"), resultSet.getString("user_type"), resultSet.getLong("id_user"));
         } catch (SQLException e) {
             LOG.warn("Cannot find user - ".concat(login));
             throw new UserDAOException("Incorrect username or password");

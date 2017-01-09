@@ -35,7 +35,6 @@ public class OrderService {
             }
         } catch (OrderDAOException e) {
             LOG.warn(e.getMessage());
-//            e.printStackTrace();
         }
         return order;
     }
@@ -50,27 +49,21 @@ public class OrderService {
         return orderList;
     }
 
-    /*
-    public static Order getCurrentClientOrder(long clientId) {
-        Order order = null;
+    public static Order insertOrder(Order order) {
+        Order result = order;
         try {
-            order = orderDao.getCurrentClientOrder(clientId);
+            result = orderDao.insertOrder(order);
         } catch (OrderDAOException e) {
             LOG.warn(e.getMessage());
-            e.printStackTrace();
         }
-        return order;
+        return result;
     }
 
-    public static Order getCurrentDriverOrder(long driverId) {
-        Order order = null;
+    public static void updateOrderStatus(long orderId, long driverId, String status) {
         try {
-            order = orderDao.getCurrentDriverOrder(driverId);
+            orderDao.updateOrderStatus(orderId, driverId, status);
         } catch (OrderDAOException e) {
             LOG.warn(e.getMessage());
-            e.printStackTrace();
         }
-        return order;
     }
-*/
 }

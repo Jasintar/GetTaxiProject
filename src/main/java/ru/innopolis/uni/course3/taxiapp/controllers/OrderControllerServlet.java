@@ -29,20 +29,19 @@ public class OrderControllerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = (User) req.getSession(false).getAttribute("user");
         if ("C".equals(user.getUsertype())) {
-            try {
-                DBConnector.getInstance().insertOrder(req.getParameter("start"), req.getParameter("finish"), user.getId());
-                resp.sendRedirect(String.format("%s%s", req.getContextPath(), "view/client/currentOrder.jsp"));
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            Order newOrder = new Order(req.getParameter("start"), req.getParameter("finish"), user.getId());
+            OrderService.insertOrder(newOrder);
+//            try {
+//                DBConnector.getInstance().insertOrder(req.getParameter("start"), req.getParameter("finish"), user.getId());
+//                resp.sendRedirect(String.format("%s%s", req.getContextPath(), "view/client/currentOrder.jsp"));
+//            } catch (SQLException e) {
+//                e.printStackTrace();
+//            }
         } else if ("D".equals(user.getUsertype())) {
-            try {
-                DBConnector.getInstance().updateOrderStatus(req.getParameter("orderId"), req.getParameter("driverId"), "progress");
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-            resp.sendRedirect(String.format("%s%s", req.getContextPath(), "view/driver/currentOrder.jsp"));
+            OrderService.updateOrderStatus(new Long(req.getParameter("orderId")), user.getId(), "progress");
+//            resp.sendRedirect(String.format("%s%s", req.getContextPath(), "order"));
         }
+        resp.sendRedirect(String.format("%s%s", req.getContextPath(), "order"));
     }
 
     @Override
@@ -57,9 +56,7 @@ public class OrderControllerServlet extends HttpServlet {
         LOG.info("list of new orders getted");
         req.setAttribute("orders", orderList);
 
-        RequestDispatcher dispatcher = req.getRequestDispatcher(
-                String.format("%s%s", req.getContextPath(), path));
+        RequestDispatcher dispatcher = req.getRequestDispatcher(String.format("%s%s", req.getContextPath(), path));
         dispatcher.forward(req, resp);
-//                resp.sendRedirect(String.format("%s%s", req.getContextPath(), "view/driver/ordersList.jsp"));
     }
 }

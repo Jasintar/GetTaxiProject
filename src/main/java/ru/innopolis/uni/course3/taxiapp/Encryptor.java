@@ -28,7 +28,6 @@ public class Encryptor {
             for (int i = 0; i < hash.length; i++) {
                 hexString.append(Integer.toHexString(0xFF & hash[i]));
             }
-
         } catch (NoSuchAlgorithmException e) {
             LOG.error(e.getMessage(), e);
         } catch (UnsupportedEncodingException e) {

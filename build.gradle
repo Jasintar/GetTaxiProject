@@ -20,7 +20,7 @@ dependencies {
 // Servlets
     compile group: 'javax.servlet', name: 'servlet-api', version: '3.0.1'
 
-//    Postgresql
+// Postgresql
     compile group: 'org.postgresql', name: 'postgresql', version: '9.4.1212'
 
 // Logging

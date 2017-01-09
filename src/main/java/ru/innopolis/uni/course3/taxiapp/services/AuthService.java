@@ -55,7 +55,6 @@ public class AuthService {
                 break;
             }
         }
-
         return path;
     }
     public static String getMessage() {

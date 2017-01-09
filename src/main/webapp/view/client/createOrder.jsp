@@ -11,18 +11,7 @@
     <title>Create order page</title>
 </head>
 <body>
-<%
-    HttpSession ses = request.getSession();
-    User user = (User) ses.getAttribute("user");
-    String firstname = "";
-    if (user != null) {
-        firstname = user.getFirstname();
-
-    } else {
-        response.sendRedirect(request.getContextPath().concat("/index.jsp"));
-    }
-%>
-    <h1>Hello, <%=firstname%>!</h1>
+    <h1>Hello, ${user.getFirstname()} !</h1>
     <p>Для заказа такси укажите параметры поездки:</p>
     <form method="POST" action="${pageContext.request.contextPath}/order">
         <label for="start">Точка отправление:</label>
@@ -35,6 +24,5 @@
     <p>
         <a href="${pageContext.servletContext.contextPath}/logaut">Выйти</a>
     </p>
-
 </body>
 </html>
