@@ -18,10 +18,11 @@ public class AuthenticationCheck implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
+        HttpServletResponse resp = (HttpServletResponse) response;
         if (req.getSession(false).getAttribute("user") != null) {
             chain.doFilter(request, response);
         } else {
-            req.getRequestDispatcher("index.jsp").forward(request, response);
+            resp.sendRedirect("/index");
         }
     }
 
