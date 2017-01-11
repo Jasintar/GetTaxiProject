@@ -17,8 +17,8 @@ public class Constants {
     public static final String SELECT_ORDERS_BY_CLIENT_ID = "SELECT * FROM \"order\" WHERE ID_CLIENT = '%s';";
     public static final String SELECT_ORDERS_BY_DRIVER_ID = "SELECT * FROM \"order\" WHERE ID_DRIVER = '%s';";
 
-    public static final String SELECT_CURRENT_ORDER_BY_CLIENT_ID = "SELECT * FROM \"order\" WHERE ID_CLIENT = '%s';";
-    public static final String SELECT_CURRENT_ORDER_BY_DRIVER_ID = "SELECT * FROM \"order\" WHERE ID_DRIVER = '%s';";
+    public static final String SELECT_CURRENT_ORDER_BY_CLIENT_ID = "SELECT * FROM \"order\" WHERE ID_CLIENT = '%s' AND STATUS != 'complete';";
+    public static final String SELECT_CURRENT_ORDER_BY_DRIVER_ID = "SELECT * FROM \"order\" WHERE ID_DRIVER = '%s' AND STATUS = 'progress';";
 
     public static final String SELECT_USER = "SELECT * FROM \"user\" WHERE USERNAME = '%s' AND PASSWORD = '%s';";
     public static final String SELECT_USER_BY_USERNAME = "SELECT * FROM \"user\" WHERE USERNAME = '%s';";

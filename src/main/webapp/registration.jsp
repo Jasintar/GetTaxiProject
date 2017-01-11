@@ -12,25 +12,25 @@
     <title>Регистрация</title>
 </head>
 <body>
-    <form method="POST" action="registration">
+    <form method="POST" action="/add">
         <label for="username">Username:</label>
         <input id="username" name="username"> <br>
         <label for="password">Password:</label>
         <input id="password" name="password"> <br>
         <label for="phone">Phone number:</label>
         <input id="phone" name="phone"> <br>
-        <label for="firstName">First name:</label>
-        <input id="firstName" name="firstName"> <br>
+        <label for="firstname">First name:</label>
+        <input id="firstname" name="firstname"> <br>
 
         <label>User type:</label> <br>
-        <p><input name="userType" type="radio" checked="true" value="client" onclick="carInfoChangeVisibility()">Client</p>
-        <p><input name="userType" type="radio" value="driver" onclick="carInfoChangeVisibility()">Driver</p>
+        <p><input name="usertype" type="radio" checked="true" value="C" onclick="carInfoChangeVisibility()">Client</p>
+        <p><input name="usertype" type="radio" value="D" onclick="carInfoChangeVisibility()">Driver</p>
 
         <div id="carInfo" style="display: none;">
-            <label for="carBrand">Car brand:</label>
-            <input id="carBrand" name="carBrand"> <br>
-            <label for="carNumber">Car number:</label>
-            <input id="carNumber" name="carNumber"> <br>
+            <label for="brand">Car brand:</label>
+            <input id="brand" name="brand"> <br>
+            <label for="number">Car number:</label>
+            <input id="number" name="number"> <br>
         </div>
 
         <input type="submit" value="Зарегистрироваться">
@@ -46,13 +46,6 @@
                 element.style.display = "none";
             }
         }
-
-//        function hideCarInfo() {
-//            var element=document.getElementById("carInfo");
-//            if (element.style.display != "none") {
-//                element.style.display = "none";
-//            }
-//        }
     </script>
 </body>
 </html>

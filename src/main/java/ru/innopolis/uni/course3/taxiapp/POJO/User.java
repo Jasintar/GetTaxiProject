@@ -1,4 +1,4 @@
-package ru.innopolis.uni.course3.taxiapp;
+package ru.innopolis.uni.course3.taxiapp.POJO;
 
 /**
  * Created on 25.12.2016.
@@ -6,6 +6,22 @@ package ru.innopolis.uni.course3.taxiapp;
  * @author Julia Savicheva
  */
 public class User {
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void setUsertype(String usertype) {
+        this.usertype = usertype;
+    }
+
     private String username;
     private String password;
     private String firstname;

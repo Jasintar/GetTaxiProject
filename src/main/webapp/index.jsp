@@ -14,9 +14,9 @@
   <body>
   Hello user! <br>
   Enter your login and password <br>
-  <p>${sessionScope.get("message")}</p>
-  ${sessionScope.remove("message")}
-  <form method="POST" action="authentication">
+  <%--<p>${sessionScope.get("message")}</p>
+  ${sessionScope.remove("message")}--%>
+  <form method="POST" action="/authentication">
     <label for="username">Username:</label>
     <input id="username" name="username"> <br>
     <label for="username">Password:</label>
@@ -26,6 +26,6 @@
   </form>
   <br>
 
-  <a href="registration.jsp"> Sign up </a>
+  <a href="registration"> Sign up </a>
   </body>
 </html>

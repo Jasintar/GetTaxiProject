@@ -19,6 +19,8 @@ dependencies {
 
 // Servlets
     compile group: 'javax.servlet', name: 'servlet-api', version: '3.0.1'
+// Spring MVC
+    compile group: 'org.springframework', name: 'spring-webmvc', version: '4.3.3.RELEASE'
 
 // Postgresql
     compile group: 'org.postgresql', name: 'postgresql', version: '9.4.1212'

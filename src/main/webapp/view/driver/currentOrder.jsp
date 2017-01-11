@@ -11,10 +11,17 @@
     <title>Title</title>
 </head>
 <body>
-    Вы взяли заказ на поездку. Тут нужно вывести информацию о заказе. <br>
+    <h1>Hello ${sessionScope.get("user").getFirstname()}!</h1>
+    <p>
+        Место отправления: ${order.getStart()}, Место назначения: ${order.getFinish()}
+    </p>
     А также сделать кнопку "Закончить поездку".
+    <form method="POST" action="${pageContext.request.contextPath}/completeOrder">
+        <input type="hidden" name="id" value="${order.getId()}">
+        <input type="submit" value="Завершить заказ">
+    </form>
 <p>
-    <a href="${pageContext.servletContext.contextPath}/logaut">Выйти</a>
+    <a href="${pageContext.servletContext.contextPath}/logout">Выйти</a>
 </p>
 </body>
 </html>

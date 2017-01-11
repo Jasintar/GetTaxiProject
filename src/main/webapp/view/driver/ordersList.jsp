@@ -20,14 +20,14 @@
         <td>Действие</td>
     </tr>
     <c:forEach items="${orders}" var="order" varStatus="status">
-        <jsp:useBean id="order" type="ru.innopolis.uni.course3.taxiapp.Order" />
+        <jsp:useBean id="order" type="ru.innopolis.uni.course3.taxiapp.POJO.Order" />
         <tr valign="top">
-            <td>${order.start}</td>
-            <td>${order.finish}</td>
+            <td>${order.getStart()}</td>
+            <td>${order.getFinish()}</td>
             <td>
-                <form method="POST" action="${pageContext.request.contextPath}/order">
-                    <input type="hidden" name="orderId" value="${order.getId().toString()}" />
-                    <input type="hidden" name="driverId" value="${sessionScope.get("user").getId().toString()}" />
+                <form method="POST" action="${pageContext.request.contextPath}/acceptOrder">
+                    <input type="hidden" name="id" value="${order.getId()}" />
+                    <%--<input type="hidden" name="driverId" value="${sessionScope.get("user").getId()}" />--%>
                     <input type="submit" value="Взять этот заказ">
                 </form>
             </td>
@@ -35,7 +35,7 @@
     </c:forEach>
 </table>
 <p>
-    <a href="${pageContext.servletContext.contextPath}/logaut">Выйти</a>
+    <a href="${pageContext.servletContext.contextPath}/logout">Выйти</a>
 </p>
 </body>
 </html>

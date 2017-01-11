@@ -17,15 +17,6 @@ public class DBConnector {
     private Connection conn;
     private Statement statement;
 
-//    static {
-//        try {
-//            Class.forName("org.postgresql.Driver");
-//        } catch (ClassNotFoundException e) {
-//            LOG.error("Can't load jdbc driver", e);
-//            throw new RuntimeException(e);
-//        }
-//    }
-
     public Statement getStatement() {
         if (statement == null) {
             try {

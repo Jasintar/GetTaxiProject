@@ -4,8 +4,6 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ru.innopolis.uni.course3.taxiapp.DAO.DAOExceptions.UserDAOException;
-import ru.innopolis.uni.course3.taxiapp.User;
 
 /**
  * Created on 05.01.2017.
@@ -14,7 +12,7 @@ import ru.innopolis.uni.course3.taxiapp.User;
  */
 public class UserDAOTest {
     private static Logger logger = LoggerFactory.getLogger(UserDAOTest.class);
-    private static final UserDAO userDao = new UserDAO();
+    private static final UserDAOJdbc userDao = new UserDAOJdbc();
 
     @BeforeClass
     public void initialization() {

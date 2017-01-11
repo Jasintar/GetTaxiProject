@@ -1,4 +1,4 @@
-<%@ page import="ru.innopolis.uni.course3.taxiapp.User" %><%--
+<%@ page import="ru.innopolis.uni.course3.taxiapp.POJO.User" %><%--
   Created by IntelliJ IDEA.
   UserDAO: julia
   Date: 25.12.2016
@@ -11,9 +11,9 @@
     <title>Create order page</title>
 </head>
 <body>
-    <h1>Hello, ${user.getFirstname()} !</h1>
+    <h1>Hello, ${sessionScope.get("user").getFirstname()} !</h1>
     <p>Для заказа такси укажите параметры поездки:</p>
-    <form method="POST" action="${pageContext.request.contextPath}/order">
+    <form method="POST" action="${pageContext.request.contextPath}/createOrder">
         <label for="start">Точка отправление:</label>
         <input id="start" name="start"> <br>
         <label for="finish">Точка назначения:</label>
@@ -22,7 +22,7 @@
         <input type="submit" value="Make order">
     </form>
     <p>
-        <a href="${pageContext.servletContext.contextPath}/logaut">Выйти</a>
+        <a href="${pageContext.servletContext.contextPath}/logout">Выйти</a>
     </p>
 </body>
 </html>

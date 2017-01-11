@@ -1,4 +1,4 @@
-package ru.innopolis.uni.course3.taxiapp;
+package ru.innopolis.uni.course3.taxiapp.POJO;
 
 /**
  * Created on 26.12.2016.
@@ -6,12 +6,16 @@ package ru.innopolis.uni.course3.taxiapp;
  * @authot Julia Savicheva
  */
 public class Order {
+
     private long id;
     private String start;
     private String finish;
     private String status;
     private long clientId;
     private long driverId;
+
+    public Order() {
+    }
 
     public Order(String start, String finish, long clientId) {
         this.start = start;
@@ -70,5 +74,25 @@ public class Order {
 
     public long getId() {
         return id;
+    }
+
+    public void setStart(String start) {
+        this.start = start;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setFinish(String finish) {
+        this.finish = finish;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public void setClientId(long clientId) {
+        this.clientId = clientId;
     }
 }

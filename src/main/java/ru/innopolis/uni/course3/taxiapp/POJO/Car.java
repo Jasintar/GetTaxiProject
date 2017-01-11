@@ -1,4 +1,4 @@
-package ru.innopolis.uni.course3.taxiapp;
+package ru.innopolis.uni.course3.taxiapp.POJO;
 
 /**
  * Created on 28.12.2016.
