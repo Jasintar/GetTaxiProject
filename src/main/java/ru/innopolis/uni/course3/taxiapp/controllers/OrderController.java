@@ -44,7 +44,6 @@ public class OrderController {
         }
         Order currentOrder = orderService.getCurrentUserOrder(user);
         model.addAttribute("order", currentOrder);
-
         return view;
     }
 
@@ -59,7 +58,6 @@ public class OrderController {
         LOG.info("show new orders");
         List orderList = orderService.getNewOrders();
         model.addAttribute("orders", orderList);
-
         return "view/driver/ordersList";
     }
 

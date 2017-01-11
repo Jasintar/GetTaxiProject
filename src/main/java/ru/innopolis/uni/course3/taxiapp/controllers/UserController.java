@@ -50,7 +50,6 @@ public class UserController {
     public String addUser(@ModelAttribute("User") User user, @ModelAttribute("Car") Car car) {
         LOG.info("add user method called");
         userService.registerUser(user, car);
-
         return "redirect:/index";
     }
 

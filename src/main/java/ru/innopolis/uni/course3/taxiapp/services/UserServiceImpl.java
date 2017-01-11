@@ -38,43 +38,6 @@ public class UserServiceImpl implements UserService {
         return this.message;
     }
 
-//    @Override
-//    public String registerUser(String username, String password, String firstName, String phone, String userType,
-//                                      String carBrand, String carNumber) {
-//        User user;
-//        Car car = null;
-//        if ("client".equals(userType)) {
-//            userType = "C";
-//        } else if ("driver".equals(userType)) {
-//            userType = "D";
-//            car = new Car(carBrand, carNumber);
-//        }
-//        password = Encryptor.hashPassword(password, Encryptor.SALT);
-//        user = new User(username, password, firstName, phone ,userType);
-//        String message;
-//
-//        try {
-//            if (this.userDao.getUserByUsername(username) == null) {
-//                userDao.insertUser(user);
-//                message = "user added";
-//                if (car != null) {
-//                    car.setUserId(user.getId());
-//                    carDao.insertCar(car);
-//                }
-//            } else  {
-//                message = "user with this username already exist!";
-//            }
-//        } catch (UserDAOException e) {
-//            message = "Cannot add user";
-//            LOG.warn("UserDAOException. Cannot add user");
-//        } catch (CarDAOException e) {
-//            message = "Cannot add car";
-//            LOG.warn("CarDAOException. Cannot add car");
-//        }
-//
-//        return message;
-//    }
-
     @Override
     public void registerUser(User user, Car car) {
         User newUser = new User(user.getUsername(), Encryptor.hashPassword(user.getPassword(), Encryptor.SALT),

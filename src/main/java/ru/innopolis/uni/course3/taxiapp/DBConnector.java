@@ -66,7 +66,7 @@ public class DBConnector {
         return INSTANCE;
     }
 
-    public static final String DATABASE_URL = "jdbc:postgresql://127.0.0.1:6000/taxiapp";
-    public static final String DATABASE_NAME = "postgres";
-    public static final String DATABASE_PASS = "123";
+    private static final String DATABASE_URL = "jdbc:postgresql://127.0.0.1:6000/taxiapp";
+    private static final String DATABASE_NAME = "postgres";
+    private static final String DATABASE_PASS = "123";
 }
