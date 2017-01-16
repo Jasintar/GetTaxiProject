@@ -6,21 +6,21 @@
 
     <display-name>Get Taxi App</display-name>
 
-    <filter>
-        <filter-name>UserCheckFilter</filter-name>
-        <filter-class>ru.innopolis.uni.course3.taxiapp.filters.AuthenticationCheck</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>UserCheckFilter</filter-name>
+    <!--<filter>-->
+        <!--<filter-name>UserCheckFilter</filter-name>-->
+        <!--<filter-class>ru.innopolis.uni.course3.taxiapp.filters.AuthenticationCheck</filter-class>-->
+    <!--</filter>-->
+    <!--<filter-mapping>-->
+        <!--<filter-name>UserCheckFilter</filter-name>-->
 
-        <url-pattern>/myOrder</url-pattern>
-        <url-pattern>/createOrder</url-pattern>
-        <url-pattern>/newOrders</url-pattern>
+        <!--<url-pattern>/myOrder</url-pattern>-->
+        <!--<url-pattern>/createOrder</url-pattern>-->
+        <!--<url-pattern>/newOrders</url-pattern>-->
 
-        <url-pattern>/completeOrder</url-pattern>
-        <url-pattern>/createOrder</url-pattern>
-        <url-pattern>/acceptOrder</url-pattern>
-    </filter-mapping>
+        <!--<url-pattern>/completeOrder</url-pattern>-->
+        <!--<url-pattern>/createOrder</url-pattern>-->
+        <!--<url-pattern>/acceptOrder</url-pattern>-->
+    <!--</filter-mapping>-->
 
     <servlet>
         <servlet-name>main</servlet-name>

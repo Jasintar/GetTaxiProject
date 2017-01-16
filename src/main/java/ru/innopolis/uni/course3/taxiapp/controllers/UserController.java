@@ -3,6 +3,9 @@ package ru.innopolis.uni.course3.taxiapp.controllers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,16 +30,19 @@ public class UserController {
 
     private UserService userService;
     private OrderService orderService;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserController(UserService userServiceImpl, OrderService orderSrviceImpl) {
+    public UserController(UserService userServiceImpl, OrderService orderSrviceImpl, PasswordEncoder passwordEncoder) {
         this.userService = userServiceImpl;
         this.orderService = orderSrviceImpl;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @RequestMapping("/index")
     public String home() {
         LOG.info("hello. Home method");
+        SecurityContextHolder.getContext().getAuthentication().getAuthorities().contains(new SimpleGrantedAuthority("C"));
         return "index";
     }
 
