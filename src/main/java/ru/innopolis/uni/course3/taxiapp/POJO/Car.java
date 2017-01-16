@@ -1,14 +1,26 @@
 package ru.innopolis.uni.course3.taxiapp.POJO;
 
+import javax.persistence.*;
+
 /**
  * Created on 28.12.2016.
  *
  * @authot Julia Savicheva
  */
+
+@Entity
+@Table(name = "CAR")
 public class Car {
+    @Id
+    @Column(name = "ID_CAR")
+    @GeneratedValue
     private long id;
+    @Column(name = "BREND")
     private String brand;
+    @Column(name = "\'number\'")
     private String number;
+    @Column(name = "ID_USER")
+    private long userId;
 
     public long getUserId() {
         return userId;
@@ -17,8 +29,6 @@ public class Car {
     public void setUserId(long userId) {
         this.userId = userId;
     }
-
-    private long userId;
 
     public Car(String brand, String number, long userId) {
         this.brand = brand;

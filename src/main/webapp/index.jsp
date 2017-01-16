@@ -16,7 +16,7 @@
   Enter your login and password <br>
   <%--<p>${sessionScope.get("message")}</p>
   ${sessionScope.remove("message")}--%>
-  <form method="POST" action="/authentication">
+  <form name="f" method="POST" action="/authentication">
     <label for="username">Username:</label>
     <input id="username" name="username"> <br>
     <label for="username">Password:</label>

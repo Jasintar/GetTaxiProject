@@ -1,17 +1,29 @@
 package ru.innopolis.uni.course3.taxiapp.POJO;
 
+import javax.persistence.*;
+
 /**
  * Created on 26.12.2016.
  *
  * @authot Julia Savicheva
  */
+@Entity
+@Table(name = "ORDER")
 public class Order {
 
+    @Id
+    @Column(name = "ID_ORDER")
+    @GeneratedValue
     private long id;
+    @Column(name = "START")
     private String start;
+    @Column(name = "FNISH")
     private String finish;
+    @Column(name = "STATUS")
     private String status;
+    @Column(name = "ID_CLIENT")
     private long clientId;
+    @Column(name = "ID_DRIVER")
     private long driverId;
 
     public Order() {

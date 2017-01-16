@@ -1,11 +1,31 @@
 package ru.innopolis.uni.course3.taxiapp.POJO;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 /**
  * Created on 25.12.2016.
  *
  * @author Julia Savicheva
  */
+@Entity
+@Table(name = "USER")
 public class User {
+    @Column(name = "ID_USER")
+    private long id;
+    @Column(name = "USERNAME")
+    private String username;
+    @Column(name = "PASSWORD")
+    private String password;
+    @Column(name = "FIRST_NAME")
+    private String firstname;
+    @Column(name = "PHONE")
+    private String phone;
+    @Column(name = "USER_TYPE")
+    private String usertype;
+
+
     public void setUsername(String username) {
         this.username = username;
     }
@@ -22,17 +42,9 @@ public class User {
         this.usertype = usertype;
     }
 
-    private String username;
-    private String password;
-    private String firstname;
-    private String phone;
-    private String usertype;
-    private long id;
-
-
     public User() {
-
     }
+
     public User(String username, String password, String firstname, String phone, String usertype) {
         this.username = username;
         this.password = password;
