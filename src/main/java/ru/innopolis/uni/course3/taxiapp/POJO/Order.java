@@ -7,23 +7,23 @@ import javax.persistence.*;
  *
  * @authot Julia Savicheva
  */
-@Entity
-@Table(name = "ORDER")
+//@Entity
+//@Table(name = "ORDER")
 public class Order {
 
-    @Id
-    @Column(name = "ID_ORDER")
-    @GeneratedValue
+//    @Id
+//    @Column(name = "ID_ORDER")
+//    @GeneratedValue
     private long id;
-    @Column(name = "START")
+//    @Column(name = "START")
     private String start;
-    @Column(name = "FNISH")
+//    @Column(name = "FNISH")
     private String finish;
-    @Column(name = "STATUS")
+//    @Column(name = "STATUS")
     private String status;
-    @Column(name = "ID_CLIENT")
+//    @Column(name = "ID_CLIENT")
     private long clientId;
-    @Column(name = "ID_DRIVER")
+//    @Column(name = "ID_DRIVER")
     private long driverId;
 
     public Order() {

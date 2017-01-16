@@ -18,7 +18,7 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <jee:jndi-lookup id="dataSource1"
-                     jndi-name="/jdbc/taxiapp"
-                     resource-ref="true" />
+    <!--<jee:jndi-lookup id="dataSource1"-->
+                     <!--jndi-name="/jdbc/taxiapp"-->
+                     <!--resource-ref="true" />-->
 </beans>

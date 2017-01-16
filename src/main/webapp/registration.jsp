@@ -35,6 +35,9 @@
 
         <input type="submit" value="Зарегистрироваться">
 
+        <input type="hidden" name="${_csrf.parameterName}"
+               value="${_csrf.token}" />
+
     </form>
     <script>
         function carInfoChangeVisibility() {

@@ -14,7 +14,7 @@ import static ru.innopolis.uni.course3.taxiapp.DAO.Constants.*;
  *
  * @authot Julia Savicheva
  */
-@Repository
+
 public class UserDAOHibernate implements UserDAO {
     private static final Logger LOG = LoggerFactory.getLogger(UserDAOHibernate.class);
 

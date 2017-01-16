@@ -16,13 +16,16 @@
   Enter your login and password <br>
   <%--<p>${sessionScope.get("message")}</p>
   ${sessionScope.remove("message")}--%>
-  <form name="f" method="POST" action="/authentication">
+  <form name="loginForm" method="POST" action="/j_spring_security_check">
     <label for="username">Username:</label>
-    <input id="username" name="username"> <br>
+    <input id="username" name="j_username"> <br>
     <label for="username">Password:</label>
-    <input id="password" name="password"> <br>
+    <input id="password" name="j_password"> <br>
 
     <input type="submit" value="Sign in">
+
+    <input type="hidden" name="${_csrf.parameterName}"
+           value="${_csrf.token}" />
   </form>
   <br>
 

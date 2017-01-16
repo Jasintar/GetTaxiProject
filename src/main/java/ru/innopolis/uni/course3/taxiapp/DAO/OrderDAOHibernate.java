@@ -21,7 +21,7 @@ import static ru.innopolis.uni.course3.taxiapp.DAO.Constants.*;
  *
  * @authot Julia Savicheva
  */
-@Repository
+
 public class OrderDAOHibernate implements OrderDAO{
     private static final Logger LOG = LoggerFactory.getLogger(OrderDAOJdbc.class);
 

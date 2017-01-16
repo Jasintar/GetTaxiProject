@@ -9,20 +9,20 @@ import javax.persistence.Table;
  *
  * @author Julia Savicheva
  */
-@Entity
-@Table(name = "USER")
+//@Entity
+//@Table(name = "USER")
 public class User {
-    @Column(name = "ID_USER")
+//    @Column(name = "ID_USER")
     private long id;
-    @Column(name = "USERNAME")
+//    @Column(name = "USERNAME")
     private String username;
-    @Column(name = "PASSWORD")
+//    @Column(name = "PASSWORD")
     private String password;
-    @Column(name = "FIRST_NAME")
+//    @Column(name = "FIRST_NAME")
     private String firstname;
-    @Column(name = "PHONE")
+//    @Column(name = "PHONE")
     private String phone;
-    @Column(name = "USER_TYPE")
+//    @Column(name = "USER_TYPE")
     private String usertype;
 
 

@@ -8,18 +8,18 @@ import javax.persistence.*;
  * @authot Julia Savicheva
  */
 
-@Entity
-@Table(name = "CAR")
+//@Entity
+//@Table(name = "CAR")
 public class Car {
-    @Id
-    @Column(name = "ID_CAR")
-    @GeneratedValue
+//    @Id
+//    @Column(name = "ID_CAR")
+//    @GeneratedValue
     private long id;
-    @Column(name = "BREND")
+//    @Column(name = "BREND")
     private String brand;
-    @Column(name = "\'number\'")
+//    @Column(name = "\'number\'")
     private String number;
-    @Column(name = "ID_USER")
+//    @Column(name = "ID_USER")
     private long userId;
 
     public long getUserId() {

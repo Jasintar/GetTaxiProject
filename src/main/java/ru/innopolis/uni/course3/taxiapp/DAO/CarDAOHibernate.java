@@ -18,7 +18,7 @@ import static ru.innopolis.uni.course3.taxiapp.DAO.Constants.INSERT_CAR_QUERY;
  *
  * @authot Julia Savicheva
  */
-@Repository
+
 public class CarDAOHibernate implements CarDAO {
     private static final Logger LOG = LoggerFactory.getLogger(CarDAOJdbc.class);
 
