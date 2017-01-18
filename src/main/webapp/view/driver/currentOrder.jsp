@@ -19,9 +19,20 @@
     <form method="POST" action="${pageContext.request.contextPath}/completeOrder">
         <input type="hidden" name="id" value="${order.getId()}">
         <input type="submit" value="Завершить заказ">
+
+        <input type="hidden" name="${_csrf.parameterName}"
+               value="${_csrf.token}" />
     </form>
-<p>
-    <a href="${pageContext.servletContext.contextPath}/logout">Выйти</a>
-</p>
+
+    <form method="POST" action="/logout">
+        <input type="submit" value="Выйти" >
+
+        <input type="hidden" name="${_csrf.parameterName}"
+               value="${_csrf.token}" />
+    </form>
+
+<%--<p>--%>
+    <%--<a href="${pageContext.servletContext.contextPath}/logout">Выйти</a>--%>
+<%--</p>--%>
 </body>
 </html>

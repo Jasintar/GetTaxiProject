@@ -3,6 +3,8 @@ package ru.innopolis.uni.course3.taxiapp.controllers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import ru.innopolis.uni.course3.taxiapp.POJO.Order;
 import ru.innopolis.uni.course3.taxiapp.POJO.User;
 import ru.innopolis.uni.course3.taxiapp.services.OrderService;
+import ru.innopolis.uni.course3.taxiapp.services.UserService;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -26,10 +29,12 @@ public class OrderController {
     private static final Logger LOG = LoggerFactory.getLogger(OrderController.class);
 
     private OrderService orderService;
+    private UserService userService;
 
     @Autowired
-    public OrderController(OrderService orderServiceImpl) {
+    public OrderController(OrderService orderServiceImpl, UserService userServiceImpl) {
         this.orderService = orderServiceImpl;
+        this.userService = userServiceImpl;
     }
 
     @RequestMapping("/myOrder")
@@ -48,8 +53,10 @@ public class OrderController {
     }
 
     @RequestMapping("/createOrder")
-    public String showCreateOrderForm() {
+    public String showCreateOrderForm(Model model) {
         LOG.info("show create order form!!!");
+//        String username = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User user =
         return "view/client/createOrder";
     }
 

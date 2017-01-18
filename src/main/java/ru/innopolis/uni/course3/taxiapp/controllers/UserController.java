@@ -42,8 +42,30 @@ public class UserController {
     @RequestMapping("/index")
     public String home() {
         LOG.info("hello. Home method");
-        SecurityContextHolder.getContext().getAuthentication().getAuthorities().contains(new SimpleGrantedAuthority("C"));
-        return "index";
+        boolean isAuthenticated = SecurityContextHolder.getContext().getAuthentication().isAuthenticated();
+        String returnPath = (isAuthenticated) ? "redirect:/main" : "index";
+//        String username = ((User)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
+//        boolean isClient = SecurityContextHolder.getContext().getAuthentication().getAuthorities().contains(
+//                new SimpleGrantedAuthority("C"));
+//        boolean isDriver = SecurityContextHolder.getContext().getAuthentication().getAuthorities().contains(
+//                new SimpleGrantedAuthority("D"));
+
+//        SecurityContextHolder.getContext().getAuthentication().getAuthorities().contains(new SimpleGrantedAuthority("C"));
+        return returnPath;
+    }
+
+    @RequestMapping("/main")
+    public String mainPageApp() {
+        LOG.info("hello. Main app method");
+        String redirectPath = getPathToRedirectSecurity();
+//        String username = ((User)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
+//        boolean isClient = SecurityContextHolder.getContext().getAuthentication().getAuthorities().contains(
+//                new SimpleGrantedAuthority("C"));
+//        boolean isDriver = SecurityContextHolder.getContext().getAuthentication().getAuthorities().contains(
+//                new SimpleGrantedAuthority("D"));
+
+//        SecurityContextHolder.getContext().getAuthentication().getAuthorities().contains(new SimpleGrantedAuthority("C"));
+        return "redirect:".concat(redirectPath);
     }
 
     @RequestMapping(value = "/registration")
@@ -52,7 +74,7 @@ public class UserController {
         return "registration";
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @RequestMapping(value = "user/add", method = RequestMethod.POST)
     public String addUser(@ModelAttribute("User") User user, @ModelAttribute("Car") Car car) {
         LOG.info("add user method called");
         userService.registerUser(user, car);
@@ -74,7 +96,7 @@ public class UserController {
         return "redirect:".concat(pathToRedirect);
     }
 
-    @RequestMapping(value = "/logout")
+    @RequestMapping(value = "/myLogout")
     public String logout(HttpSession session) {
         LOG.info("user is trying to logout");
         session.invalidate();
@@ -82,8 +104,39 @@ public class UserController {
         return "redirect:/index";
     }
 
+    private String getPathToRedirectSecurity() {
+        String path = "/index";
+
+//        Object prenc = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username = ((org.springframework.security.core.userdetails.User)
+                SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
+        User user;
+        try {
+            user = userService.getUserByUsername(username);
+        } catch (UserDAOException e) {
+            LOG.warn("getPathToRedirectSecurity method: User not authenticated.");
+            user = null;
+        }
+
+        if (user != null) {
+            path = "/myOrder";
+            Order order = orderService.getCurrentUserOrder(user);
+            if (order == null) {
+                if (SecurityContextHolder.getContext().getAuthentication().getAuthorities().contains(
+                        new SimpleGrantedAuthority("C"))) {
+                    path = "/createOrder";
+                } else if (SecurityContextHolder.getContext().getAuthentication().getAuthorities().contains(
+                        new SimpleGrantedAuthority("D"))) {
+                    path = "/newOrders";
+                }
+            }
+        }
+        return path;
+    }
+
     private String getPathToRedirect(User user) {
         String path = "/index";
+
         if (user != null) {
             path = "/myOrder";
             Order order = orderService.getCurrentUserOrder(user);

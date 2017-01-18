@@ -18,4 +18,6 @@ public interface UserService {
     void registerUser(User user, Car car);
 
     User getUserByCredentials(User credentials) throws UserDAOException;
+
+    User getUserByUsername(String username) throws UserDAOException;
 }

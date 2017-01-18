@@ -29,13 +29,23 @@
                     <input type="hidden" name="id" value="${order.getId()}" />
                     <%--<input type="hidden" name="driverId" value="${sessionScope.get("user").getId()}" />--%>
                     <input type="submit" value="Взять этот заказ">
+
+                    <input type="hidden" name="${_csrf.parameterName}"
+                           value="${_csrf.token}" />
                 </form>
             </td>
         </tr>
     </c:forEach>
 </table>
-<p>
-    <a href="${pageContext.servletContext.contextPath}/logout">Выйти</a>
-</p>
+
+<form method="POST" action="/logout">
+    <input type="submit" value="Выйти" >
+    <input type="hidden" name="${_csrf.parameterName}"
+           value="${_csrf.token}" />
+</form>
+
+<%--<p>--%>
+    <%--<a href="${pageContext.servletContext.contextPath}/logout">Выйти</a>--%>
+<%--</p>--%>
 </body>
 </html>

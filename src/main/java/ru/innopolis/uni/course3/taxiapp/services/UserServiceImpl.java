@@ -88,4 +88,9 @@ public class UserServiceImpl implements UserService {
         }
         return user;
     }
+
+    @Override
+    public User getUserByUsername(String username) throws UserDAOException {
+        return userDao.getUserByUsername(username);
+    }
 }

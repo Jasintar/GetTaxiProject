@@ -12,7 +12,7 @@
     <title>Регистрация</title>
 </head>
 <body>
-    <form method="POST" action="/add">
+    <form method="POST" action="user/add">
         <label for="username">Username:</label>
         <input id="username" name="username"> <br>
         <label for="password">Password:</label>

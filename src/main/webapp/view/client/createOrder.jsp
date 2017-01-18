@@ -20,9 +20,18 @@
         <input id="finish" name="finish"> <br>
 
         <input type="submit" value="Make order">
+
+        <input type="hidden" name="${_csrf.parameterName}"
+               value="${_csrf.token}" />
     </form>
-    <p>
-        <a href="${pageContext.servletContext.contextPath}/logout">Выйти</a>
-    </p>
+
+    <form method="POST" action="/logout">
+        <input type="submit" value="Выйти" >
+        <input type="hidden" name="${_csrf.parameterName}"
+               value="${_csrf.token}" />
+    </form>
+    <%--<p>--%>
+        <%--<a href="${pageContext.servletContext.contextPath}/logout">Выйти</a>--%>
+    <%--</p>--%>
 </body>
 </html>
