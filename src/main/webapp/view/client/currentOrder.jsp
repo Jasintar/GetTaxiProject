@@ -11,7 +11,7 @@
     <title>Current order</title>
 </head>
 <body>
-    <h1>Hello, ${sessionScope.get("user").getFirstname()}!</h1>
+    <h1>Hello, ${user.getFirstname()}!</h1>
     <p>You placed order. Now you can wait only!</p>
 
     <form method="POST" action="/logout">
@@ -20,9 +20,5 @@
         <input type="hidden" name="${_csrf.parameterName}"
                value="${_csrf.token}" />
     </form>
-
-    <%--<p>--%>
-        <%--<a href="${pageContext.servletContext.contextPath}/logout">Выйти</a>--%>
-    <%--</p>--%>
 </body>
 </html>

@@ -19,5 +19,5 @@ public interface UserService {
 
     User getUserByCredentials(User credentials) throws UserDAOException;
 
-    User getUserByUsername(String username) throws UserDAOException;
+    User getUserByUsername(String username);
 }

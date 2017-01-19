@@ -12,7 +12,7 @@
     <title>Title</title>
 </head>
 <body>
-<h1>Hello ${sessionScope.get("user").getFirstname()}!</h1>
+<h1>Hello ${user.getFirstname()}!</h1>
 <table border="1">
     <tr>
         <td>Отправление</td>
@@ -27,7 +27,6 @@
             <td>
                 <form method="POST" action="${pageContext.request.contextPath}/acceptOrder">
                     <input type="hidden" name="id" value="${order.getId()}" />
-                    <%--<input type="hidden" name="driverId" value="${sessionScope.get("user").getId()}" />--%>
                     <input type="submit" value="Взять этот заказ">
 
                     <input type="hidden" name="${_csrf.parameterName}"
@@ -43,9 +42,5 @@
     <input type="hidden" name="${_csrf.parameterName}"
            value="${_csrf.token}" />
 </form>
-
-<%--<p>--%>
-    <%--<a href="${pageContext.servletContext.contextPath}/logout">Выйти</a>--%>
-<%--</p>--%>
 </body>
 </html>

@@ -90,7 +90,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUserByUsername(String username) throws UserDAOException {
-        return userDao.getUserByUsername(username);
+    public User getUserByUsername(String username) {
+        User user = null;
+        try {
+            user = userDao.getUserByUsername(username);
+        } catch (UserDAOException e) {
+            LOG.warn("UserDAOException: ".concat(e.getMessage()));
+            message = e.getMessage();
+        }
+        return user;
     }
 }

@@ -3,7 +3,6 @@ package ru.innopolis.uni.course3.taxiapp.controllers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +14,6 @@ import ru.innopolis.uni.course3.taxiapp.POJO.User;
 import ru.innopolis.uni.course3.taxiapp.services.OrderService;
 import ru.innopolis.uni.course3.taxiapp.services.UserService;
 
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -38,9 +36,13 @@ public class OrderController {
     }
 
     @RequestMapping("/myOrder")
-    public String showUserCurrentOrder(HttpSession session, Model model) {
+    public String showUserCurrentOrder(Model model) {
         LOG.info("my order page");
-        User user = (User) session.getAttribute("user");
+        String username = ((org.springframework.security.core.userdetails.User)
+                SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
+//        User user = (User) session.getAttribute("user");
+        User user = userService.getUserByUsername(username);
+
         String view;
         if ("D".equals(user.getUsertype())) {
             view = "view/driver/currentOrder";
@@ -49,44 +51,58 @@ public class OrderController {
         }
         Order currentOrder = orderService.getCurrentUserOrder(user);
         model.addAttribute("order", currentOrder);
+        model.addAttribute("user", user);
         return view;
     }
 
     @RequestMapping("/createOrder")
     public String showCreateOrderForm(Model model) {
         LOG.info("show create order form!!!");
-//        String username = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        User user =
+        String username = ((org.springframework.security.core.userdetails.User)
+                SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
+        User user = userService.getUserByUsername(username);
+        model.addAttribute("user", user);
         return "view/client/createOrder";
     }
 
     @RequestMapping("/newOrders")
     public String showNewOrdersList(Model model) {
         LOG.info("show new orders");
+        String username = ((org.springframework.security.core.userdetails.User)
+                SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
+        User user = userService.getUserByUsername(username);
+        model.addAttribute("user", user);
+
         List orderList = orderService.getNewOrders();
         model.addAttribute("orders", orderList);
         return "view/driver/ordersList";
     }
 
     @RequestMapping(value = "/completeOrder", method = RequestMethod.POST)
-    public String completeOrder(HttpSession session, @ModelAttribute("Order") Order order) {
-        User user = (User) session.getAttribute("user");
+    public String completeOrder(@ModelAttribute("Order") Order order) {
+        String username = ((org.springframework.security.core.userdetails.User)
+                SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
+        User user = userService.getUserByUsername(username);
+//        User user = (User) session.getAttribute("user");
         orderService.updateOrderStatus(order.getId(), user.getId(), "complete");
         return "redirect:/newOrders";
     }
 
     @RequestMapping(value = "/createOrder", method = RequestMethod.POST)
-    public String createOrder(HttpSession session, @ModelAttribute("Order") Order order) {
-        User user = (User) session.getAttribute("user");
+    public String createOrder(@ModelAttribute("Order") Order order) {
+        String username = ((org.springframework.security.core.userdetails.User)
+                SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
+        User user = userService.getUserByUsername(username);
         order.setClientId(user.getId());
         orderService.insertOrder(order);
         return "redirect:/myOrder";
     }
 
     @RequestMapping(value = "/acceptOrder", method = RequestMethod.POST)
-    public String acceptOrder(HttpSession session, @ModelAttribute("Order") Order order) {
-        User user = (User) session.getAttribute("user");
-//        order.setDriverId(user.getId());
+    public String acceptOrder(@ModelAttribute("Order") Order order) {
+        String username = ((org.springframework.security.core.userdetails.User)
+                SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
+        User user = userService.getUserByUsername(username);
         orderService.updateOrderStatus(order.getId(), user.getId(), "progress");
         return "redirect:/myOrder";
     }

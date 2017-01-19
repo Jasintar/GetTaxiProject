@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-    <h1>Hello ${sessionScope.get("user").getFirstname()}!</h1>
+    <h1>Hello ${user.getFirstname()}!</h1>
     <p>
         Место отправления: ${order.getStart()}, Место назначения: ${order.getFinish()}
     </p>
@@ -30,9 +30,5 @@
         <input type="hidden" name="${_csrf.parameterName}"
                value="${_csrf.token}" />
     </form>
-
-<%--<p>--%>
-    <%--<a href="${pageContext.servletContext.contextPath}/logout">Выйти</a>--%>
-<%--</p>--%>
 </body>
 </html>
