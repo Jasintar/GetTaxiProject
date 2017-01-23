@@ -3,7 +3,6 @@ package ru.innopolis.uni.course3.taxiapp.DAO;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Repository;
 import ru.innopolis.uni.course3.taxiapp.DAO.DAOExceptions.OrderDAOException;
 import ru.innopolis.uni.course3.taxiapp.DBConnector;
 import ru.innopolis.uni.course3.taxiapp.POJO.Order;
@@ -22,7 +21,7 @@ import static ru.innopolis.uni.course3.taxiapp.DAO.Constants.*;
  *
  * @authot Julia Savicheva
  */
-@Repository
+//@Repository
 public class OrderDAOJdbc implements OrderDAO {
     private static final Logger LOG = LoggerFactory.getLogger(OrderDAOJdbc.class);
 

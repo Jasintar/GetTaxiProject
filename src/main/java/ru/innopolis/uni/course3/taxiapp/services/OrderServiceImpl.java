@@ -3,6 +3,7 @@ package ru.innopolis.uni.course3.taxiapp.services;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import ru.innopolis.uni.course3.taxiapp.DAO.DAOExceptions.OrderDAOException;
 import ru.innopolis.uni.course3.taxiapp.DAO.OrderDAO;
@@ -28,7 +29,7 @@ public class OrderServiceImpl implements OrderService {
     private String message;
 
     @Autowired
-    public OrderServiceImpl(OrderDAO orderDAOImpl, UserDAO userDAOImpl) {
+    public OrderServiceImpl(@Qualifier("orderDAOHibernate") OrderDAO orderDAOImpl, @Qualifier("userDAOHibernate") UserDAO userDAOImpl) {
         this.orderDao = orderDAOImpl;
         this.userDao = userDAOImpl;
     }

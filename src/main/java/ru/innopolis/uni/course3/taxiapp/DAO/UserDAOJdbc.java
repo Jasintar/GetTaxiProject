@@ -2,7 +2,6 @@ package ru.innopolis.uni.course3.taxiapp.DAO;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Repository;
 import ru.innopolis.uni.course3.taxiapp.DAO.DAOExceptions.UserDAOException;
 import ru.innopolis.uni.course3.taxiapp.DBConnector;
 import ru.innopolis.uni.course3.taxiapp.POJO.User;
@@ -19,7 +18,7 @@ import static ru.innopolis.uni.course3.taxiapp.DAO.Constants.*;
  *
  * @authot Julia Savicheva
  */
-@Repository("UserDAO")
+//@Repository
 public class UserDAOJdbc  implements UserDAO{
     private static final Logger LOG = LoggerFactory.getLogger(UserDAOJdbc.class);
 

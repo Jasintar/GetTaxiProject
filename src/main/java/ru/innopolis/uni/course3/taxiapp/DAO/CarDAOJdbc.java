@@ -2,23 +2,22 @@ package ru.innopolis.uni.course3.taxiapp.DAO;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Repository;
-import ru.innopolis.uni.course3.taxiapp.POJO.Car;
 import ru.innopolis.uni.course3.taxiapp.DAO.DAOExceptions.CarDAOException;
 import ru.innopolis.uni.course3.taxiapp.DBConnector;
+import ru.innopolis.uni.course3.taxiapp.POJO.Car;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import static ru.innopolis.uni.course3.taxiapp.DAO.Constants.*;
+import static ru.innopolis.uni.course3.taxiapp.DAO.Constants.INSERT_CAR_QUERY;
 
 /**
  * Created on 28.12.2016.
  *
  * @authot Julia Savicheva
  */
-@Repository
+//@Repository
 public class CarDAOJdbc implements CarDAO {
     private static final Logger LOG = LoggerFactory.getLogger(CarDAOJdbc.class);
 

@@ -4,17 +4,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import ru.innopolis.uni.course3.taxiapp.DAO.DAOExceptions.OrderDAOException;
-import ru.innopolis.uni.course3.taxiapp.DBConnector;
 import ru.innopolis.uni.course3.taxiapp.POJO.Order;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
-import static ru.innopolis.uni.course3.taxiapp.DAO.Constants.*;
 
 /**
  * Created on 16.01.2017.
@@ -22,6 +15,7 @@ import static ru.innopolis.uni.course3.taxiapp.DAO.Constants.*;
  * @authot Julia Savicheva
  */
 
+@Repository("orderDAOHibernate")
 public class OrderDAOHibernate implements OrderDAO{
     private static final Logger LOG = LoggerFactory.getLogger(OrderDAOJdbc.class);
 

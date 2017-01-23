@@ -1,4 +1,4 @@
-package ru.innopolis.uni.course3.taxiapp.POJO;
+package ru.innopolis.uni.course3.taxiapp.entities;
 
 import javax.persistence.*;
 
@@ -10,7 +10,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "CAR")
-public class Car {
+public class CarEntity {
     @Id
     @Column(name = "ID_CAR")
     @GeneratedValue
@@ -30,21 +30,21 @@ public class Car {
         this.userId = userId;
     }
 
-    public Car(String brand, String number, long userId) {
+    public CarEntity(String brand, String number, long userId) {
         this.brand = brand;
         this.number = number;
         this.userId = userId;
     }
 
-    public Car(String brand, String number) {
+    public CarEntity(String brand, String number) {
         this.brand = brand;
         this.number = number;
     }
 
-    public Car() {
+    public CarEntity() {
     }
 
-    public Car(long id, String brand, String number, long userId) {
+    public CarEntity(long id, String brand, String number, long userId) {
         this.id = id;
         this.brand = brand;
         this.number = number;

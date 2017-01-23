@@ -2,28 +2,46 @@ package ru.innopolis.uni.course3.taxiapp.DAO;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.springframework.stereotype.Repository;
 import ru.innopolis.uni.course3.taxiapp.DAO.DAOExceptions.UserDAOException;
 import ru.innopolis.uni.course3.taxiapp.POJO.User;
 
-import static ru.innopolis.uni.course3.taxiapp.DAO.Constants.*;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
 
 /**
  * Created on 16.01.2017.
  *
  * @authot Julia Savicheva
  */
-
+@Repository("userDAOHibernate")
 public class UserDAOHibernate implements UserDAO {
     private static final Logger LOG = LoggerFactory.getLogger(UserDAOHibernate.class);
 
-    public UserDAOHibernate() {
-    }
+
+//    private SessionFactory sessionFactory;
+//
+//    @Autowired
+//    public UserDAOHibernate(SessionFactory sessionFactoryImpl) {
+//        this.sessionFactory = sessionFactoryImpl;
+//    }
+
+    @PersistenceUnit
+    EntityManagerFactory emf;
+
 
     @Override
     public User getUserByCredentials(String login, String password) throws UserDAOException {
+        EntityManager em = emf.createEntityManager();
+        em.find(User.class, 1);
+
         User user = null;
+        // Retrieve session from Hibernate
+//        Session session = sessionFactory.getCurrentSession();
+
+//        User user = (User) session.get(User.class)
+
 //        Statement statement = DBConnector.getInstance().getStatement();
 //
 //        String query = String.format(SELECT_USER, login, password);
@@ -46,6 +64,9 @@ public class UserDAOHibernate implements UserDAO {
     @Override
     public User getUserByUsername(String login) throws UserDAOException {
         User user = null;
+        EntityManager em = emf.createEntityManager();
+        em.find(User.class, 1);
+
 //        Statement statement = DBConnector.getInstance().getStatement();
 //        ResultSet resultSet;
 //        String query = String.format(SELECT_USER_BY_USERNAME, login);
@@ -63,6 +84,7 @@ public class UserDAOHibernate implements UserDAO {
 
     @Override
     public User insertUser(User user) throws UserDAOException {
+
 //        try(PreparedStatement statement = DBConnector.getInstance().getPreparedStatement(INSERT_USER_QUERY)) {
 //            int result;
 //            statement.setString(1, user.getUsername());

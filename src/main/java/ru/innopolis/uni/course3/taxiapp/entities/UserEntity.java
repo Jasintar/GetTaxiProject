@@ -1,4 +1,4 @@
-package ru.innopolis.uni.course3.taxiapp.POJO;
+package ru.innopolis.uni.course3.taxiapp.entities;
 
 
 
@@ -11,11 +11,13 @@ package ru.innopolis.uni.course3.taxiapp.POJO;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "USER")
-public class User {
+public class UserEntity {
+    @Id
     @Column(name= "ID_USER")
     private long id;
     @Column(name = "USERNAME")
@@ -46,10 +48,10 @@ public class User {
         this.usertype = usertype;
     }
 
-    public User() {
+    public UserEntity() {
     }
 
-    public User(String username, String password, String firstname, String phone, String usertype) {
+    public UserEntity(String username, String password, String firstname, String phone, String usertype) {
         this.username = username;
         this.password = password;
         this.firstname = firstname;
@@ -57,7 +59,7 @@ public class User {
         this.usertype = usertype;
     }
 
-    public User(String username, String firstname, String phone, String usertype, long id) {
+    public UserEntity(String username, String firstname, String phone, String usertype, long id) {
         this.username = username;
         this.firstname = firstname;
         this.phone = phone;

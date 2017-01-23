@@ -1,4 +1,4 @@
-package ru.innopolis.uni.course3.taxiapp.POJO;
+package ru.innopolis.uni.course3.taxiapp.entities;
 
 import javax.persistence.*;
 
@@ -9,7 +9,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "ORDER")
-public class Order {
+public class OrderEntity {
 
     @Id
     @Column(name = "ID_ORDER")
@@ -26,23 +26,23 @@ public class Order {
     @Column(name = "ID_DRIVER")
     private long driverId;
 
-    public Order() {
+    public OrderEntity() {
     }
 
-    public Order(String start, String finish, long clientId) {
+    public OrderEntity(String start, String finish, long clientId) {
         this.start = start;
         this.finish = finish;
         this.clientId = clientId;
     }
 
-    public Order(String start, String finish, String status, long clientId) {
+    public OrderEntity(String start, String finish, String status, long clientId) {
         this.start = start;
         this.finish = finish;
         this.status = status;
         this.clientId = clientId;
     }
 
-    public Order(long id, String start, String finish, String status, long clientId) {
+    public OrderEntity(long id, String start, String finish, String status, long clientId) {
         this.id = id;
         this.start = start;
         this.finish = finish;
@@ -50,7 +50,7 @@ public class Order {
         this.clientId = clientId;
     }
 
-    public Order(long id, String start, String finish, String status, long clientId, long driverId) {
+    public OrderEntity(long id, String start, String finish, String status, long clientId, long driverId) {
         this.id = id;
         this.start = start;
         this.finish = finish;
